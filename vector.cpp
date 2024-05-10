@@ -11,14 +11,14 @@ int main(int, char **)
 
     constexpr size_t DEPTH = 40;
     constexpr size_t COUNT = 100'000'000;
-	constexpr size_t BLOCK_SIZE = DEPTH;
+    constexpr size_t BLOCK_SIZE = DEPTH;
 
     run_and_measure([&]() 
     {
-		
+        
         PhpFrame *stack = nullptr;
-		std::vector<PhpFrame> slots;
-		slots.reserve(2*BLOCK_SIZE);
+        std::vector<PhpFrame> slots;
+        slots.reserve(2*BLOCK_SIZE);
 
         auto i = COUNT;
         auto d = DEPTH;
@@ -27,11 +27,11 @@ int main(int, char **)
             if (f) 
             {   
                 slots.emplace_back(ex, fn_wrap, stack);
-				auto lastEleIt = std::prev(slots.end());
-				stack = &(*lastEleIt);
+                auto lastEleIt = std::prev(slots.end());
+                stack = &(*lastEleIt);
             }
             else 
-			{
+            {
                 stack = stack !=nullptr ? stack->prev() : nullptr;
                 slots.pop_back();
             }
@@ -42,7 +42,7 @@ int main(int, char **)
         }
 
         slots.clear();
-		
+        
     }, "\n*** Using linked list with depth {} and {} iterations\n\n", DEPTH, COUNT);
 
     return 0;

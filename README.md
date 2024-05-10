@@ -2,8 +2,7 @@
 
 ## comparing the execution speeds over different containers  
 
-This is a C++ program to check how well we can reduce no of new() calls from the execution.
-
+This is a C++ program to check how well we can reduce execution time of a sample program, (please see main() function in see link.cpp ) 
 In my opinion, We can use a vector with sufficient capacity (DEPTH) reserved.
 It gave quite comparable results as that of my custom stack ( stack with a custom container supporting placement new ).
 
